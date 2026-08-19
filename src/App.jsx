@@ -133,24 +133,24 @@ export default function App() {
               badge={`${selectedDepIds.length} ${t.selectedBadge}`}
               badgeColor="indigo"
               action={
-                <div className="flex items-center gap-1.5 text-xs">
+                <div className="flex items-center gap-2 text-xs sm:text-sm">
                   <button
                     onClick={handleResetToMatches}
                     title={t.resetMatches}
-                    className="flex items-center gap-1 rounded border border-slate-800 bg-slate-950/80 px-2 py-0.5 text-slate-300 hover:text-white"
+                    className="flex items-center gap-1.5 rounded-md border border-slate-800 bg-slate-950/80 px-2.5 py-1 text-xs font-medium text-slate-300 transition hover:border-slate-700 hover:text-white"
                   >
-                    <RotateCcw className="h-3 w-3 text-emerald-400" />
+                    <RotateCcw className="h-3.5 w-3.5 text-emerald-400" />
                     <span className="hidden sm:inline">{t.resetMatches}</span>
                   </button>
                   <button
                     onClick={handleSelectAllCategory}
-                    className="rounded border border-slate-800 bg-slate-950/80 px-2 py-0.5 text-slate-300 hover:text-white"
+                    className="rounded-md border border-slate-800 bg-slate-950/80 px-2.5 py-1 text-xs font-medium text-slate-300 transition hover:border-slate-700 hover:text-white"
                   >
                     {t.selectCategory}
                   </button>
                   <button
                     onClick={handleClearAll}
-                    className="rounded border border-slate-800 bg-slate-950/80 px-2 py-0.5 text-rose-400 hover:bg-rose-950/30"
+                    className="rounded-md border border-slate-800 bg-slate-950/80 px-2.5 py-1 text-xs font-medium text-rose-400 transition hover:bg-rose-950/30 hover:border-rose-900/50"
                   >
                     {t.clearAll}
                   </button>
@@ -158,7 +158,7 @@ export default function App() {
               }
             >
               {/* Filter Tabs */}
-              <div className="mb-3 flex flex-wrap gap-1 border-b border-slate-800/80 pb-2.5">
+              <div className="mb-3 flex flex-wrap gap-1.5 border-b border-slate-800/80 pb-3">
                 {CATEGORIES.map((cat) => {
                   const active = activeCategory === cat.id;
                   const label = cat.labels[lang] || cat.labels['en-US'];
@@ -167,10 +167,10 @@ export default function App() {
                     <button
                       key={cat.id}
                       onClick={() => setActiveCategory(cat.id)}
-                      className={`rounded-md px-2 py-1 text-[11px] font-medium transition ${
+                      className={`rounded-md px-3 py-1.5 text-xs sm:text-sm font-medium transition ${
                         active
-                          ? 'bg-emerald-500 text-slate-950 font-bold'
-                          : 'border border-slate-800/60 bg-slate-950/40 text-slate-400 hover:text-slate-200'
+                          ? 'bg-emerald-500 text-slate-950 font-bold shadow-sm shadow-emerald-500/20'
+                          : 'border border-slate-800/60 bg-slate-950/40 text-slate-400 hover:text-slate-200 hover:border-slate-700'
                       }`}
                     >
                       {label}
@@ -180,7 +180,7 @@ export default function App() {
               </div>
 
               {/* Grid of Dependencies */}
-              <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {filteredDependencies.map((dep) => {
                   const isSelected = selectedDepIds.includes(dep.id);
                   const isRecommended = autoMatchedIds.includes(dep.id);
@@ -202,7 +202,7 @@ export default function App() {
           </div>
 
           {/* Right Column: Sticky Build Config */}
-          <div className="space-y-4 lg:col-span-5 lg:sticky lg:top-14">
+          <div className="space-y-4 lg:col-span-5 lg:sticky lg:top-16">
             <SectionCard
               title={t.sec3Title}
               icon={CodeXml}
@@ -222,7 +222,7 @@ export default function App() {
               />
             </SectionCard>
 
-            <p className="text-center text-[10px] text-slate-500">
+            <p className="text-center text-xs sm:text-sm text-slate-500">
               {t.footerText}
             </p>
           </div>

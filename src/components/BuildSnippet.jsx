@@ -59,15 +59,15 @@ export default function BuildSnippet({
   }&language=java&platformVersion=${springBootVersion}&packaging=jar&jvmVersion=${javaVersion}&dependencies=${initializrDeps}`;
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3.5">
       {/* Controls row */}
-      <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
+      <div className="flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm">
         <div className="inline-flex rounded-lg bg-slate-950 p-0.5 border border-slate-800">
           <button
             onClick={() => onBuildToolChange('maven')}
-            className={`rounded px-2.5 py-1 text-xs font-medium transition ${
+            className={`rounded px-3 py-1 text-xs sm:text-sm font-semibold transition ${
               buildTool === 'maven'
-                ? 'bg-emerald-500 text-slate-950 font-semibold'
+                ? 'bg-emerald-500 text-slate-950 shadow-sm shadow-emerald-500/20'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -75,9 +75,9 @@ export default function BuildSnippet({
           </button>
           <button
             onClick={() => onBuildToolChange('gradle')}
-            className={`rounded px-2.5 py-1 text-xs font-medium transition ${
+            className={`rounded px-3 py-1 text-xs sm:text-sm font-semibold transition ${
               buildTool === 'gradle'
-                ? 'bg-emerald-500 text-slate-950 font-semibold'
+                ? 'bg-emerald-500 text-slate-950 shadow-sm shadow-emerald-500/20'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -85,49 +85,49 @@ export default function BuildSnippet({
           </button>
         </div>
 
-        <div className="flex items-center gap-2 text-[11px] text-slate-400">
-          <span>Java</span>
+        <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-300">
+          <span className="font-medium">Java</span>
           <select
             value={javaVersion}
             onChange={(e) => onJavaVersionChange(e.target.value)}
             aria-label="Java version"
-            className="rounded border border-slate-800 bg-slate-950 px-1.5 py-0.5 text-slate-200 outline-none"
+            className="rounded border border-slate-800 bg-slate-950 px-2 py-0.5 text-xs sm:text-sm text-slate-200 outline-none focus:border-emerald-500/80"
           >
             <option value="21">21</option>
             <option value="17">17</option>
           </select>
-          <span className="font-mono text-emerald-400">Boot {springBootVersion}</span>
+          <span className="font-mono text-emerald-400 font-medium">Boot {springBootVersion}</span>
         </div>
       </div>
 
       {/* Code Snippet Box */}
-      <div className="relative overflow-hidden rounded-lg border border-slate-800 bg-slate-950 font-mono text-[11px]">
-        <div className="flex items-center justify-between border-b border-slate-800 bg-slate-900/90 px-3 py-1.5">
-          <div className="flex items-center gap-1.5 text-slate-400 text-xs">
-            <Code2 className="h-3.5 w-3.5 text-emerald-400" />
-            <span>{buildTool === 'maven' ? 'pom.xml' : 'build.gradle'}</span>
-            <span className="text-[10px] text-slate-500">({selectedDeps.length})</span>
+      <div className="relative overflow-hidden rounded-lg border border-slate-800 bg-slate-950 font-mono">
+        <div className="flex items-center justify-between border-b border-slate-800 bg-slate-900/90 px-3.5 py-2">
+          <div className="flex items-center gap-2 text-slate-300 text-xs sm:text-sm">
+            <Code2 className="h-4 w-4 text-emerald-400" />
+            <span className="font-semibold">{buildTool === 'maven' ? 'pom.xml' : 'build.gradle'}</span>
+            <span className="text-xs text-slate-500">({selectedDeps.length})</span>
           </div>
 
           <button
             onClick={() => onCopy(snippetCode)}
-            className="flex items-center gap-1 rounded border border-slate-700 bg-slate-800 px-2 py-0.5 text-[11px] font-medium text-slate-200 transition hover:border-emerald-500 hover:text-white"
+            className="flex items-center gap-1.5 rounded border border-slate-700 bg-slate-800 px-2.5 py-1 text-xs font-medium text-slate-200 transition hover:border-emerald-500 hover:text-white"
           >
             {copied ? (
               <>
-                <Check className="h-3 w-3 text-emerald-400" />
-                <span className="text-emerald-400">{t.copiedBtn}</span>
+                <Check className="h-3.5 w-3.5 text-emerald-400" />
+                <span className="text-emerald-400 font-semibold">{t.copiedBtn}</span>
               </>
             ) : (
               <>
-                <Copy className="h-3 w-3" />
+                <Copy className="h-3.5 w-3.5" />
                 <span>{t.copyBtn}</span>
               </>
             )}
           </button>
         </div>
 
-        <pre className="max-h-56 overflow-x-auto p-3 text-slate-300 leading-tight scrollbar-thin">
+        <pre className="max-h-60 overflow-x-auto p-3.5 text-xs sm:text-sm leading-relaxed text-slate-300 scrollbar-thin">
           <code>{snippetCode}</code>
         </pre>
       </div>
@@ -137,11 +137,11 @@ export default function BuildSnippet({
         href={initializrUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-500 py-2 text-xs font-bold text-slate-950 shadow transition hover:bg-emerald-400 active:scale-[0.99]"
+        className="flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-500 py-2.5 text-sm sm:text-base font-bold text-slate-950 shadow-sm shadow-emerald-500/20 transition hover:bg-emerald-400 active:scale-[0.99]"
       >
-        <Download className="h-3.5 w-3.5" />
+        <Download className="h-4 w-4" />
         <span>{t.launchInitializr}</span>
-        <ExternalLink className="h-3 w-3 opacity-70" />
+        <ExternalLink className="h-3.5 w-3.5 opacity-75" />
       </a>
     </div>
   );

@@ -16,19 +16,19 @@ export default function SectionCard({
   };
 
   return (
-    <section className={`rounded-xl border border-slate-800 bg-slate-900/50 p-4 shadow-md backdrop-blur-sm ${className}`}>
+    <section className={`rounded-xl border border-slate-800 bg-slate-900/50 p-4 sm:p-5 shadow-md backdrop-blur-sm ${className}`}>
       {(title || Icon || badge || action) && (
-        <div className="mb-3 flex items-center justify-between gap-2 border-b border-slate-800/80 pb-2.5">
-          <div className="flex items-center gap-2">
-            {Icon && <Icon className="h-4 w-4 text-emerald-400 shrink-0" />}
-            <h2 className="text-sm font-semibold text-slate-100">{title}</h2>
+        <div className="mb-3 flex items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
+          <div className="flex items-center gap-2.5">
+            {Icon && <Icon className="h-5 w-5 text-emerald-400 shrink-0" />}
+            <h2 className="text-base sm:text-lg font-bold text-slate-100">{title}</h2>
             {badge && (
-              <span className={`rounded-full border px-2 py-0.2 text-[10px] font-medium ${badgeColors[badgeColor] || badgeColors.emerald}`}>
+              <span className={`rounded-full border px-2.5 py-0.5 text-xs font-medium ${badgeColors[badgeColor] || badgeColors.emerald}`}>
                 {badge}
               </span>
             )}
           </div>
-          {action && <div className="flex items-center gap-1.5">{action}</div>}
+          {action && <div className="flex items-center gap-2">{action}</div>}
         </div>
       )}
       <div>{children}</div>

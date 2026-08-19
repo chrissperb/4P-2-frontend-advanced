@@ -16,13 +16,13 @@ export default function LanguageSelector({ currentLang, onLanguageChange }) {
             onClick={() => onLanguageChange(lang.code)}
             type="button"
             title={`Switch to ${lang.name}`}
-            className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-semibold transition-all duration-150 ${
+            className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs sm:text-sm font-semibold transition-all duration-150 ${
               active
                 ? 'bg-emerald-500 text-slate-950 shadow-sm shadow-emerald-500/20'
                 : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
             }`}
           >
-            <span className="text-sm leading-none" role="img" aria-label={lang.name}>
+            <span className="text-base leading-none" role="img" aria-label={lang.name}>
               {lang.flag}
             </span>
             <span className="tracking-wide">{lang.label}</span>
