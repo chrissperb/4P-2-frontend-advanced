@@ -4,6 +4,8 @@
 
 SpringStack Advisor is a static React application designed to help Java developers discover, select, and configure the right Spring Boot dependencies for their applications. By entering natural language architecture requirements (or selecting common presets), the application analyzes requirements in real time, recommends matching Spring Boot 3.4 modules with clear architectural rationales, and generates ready-to-use Maven `pom.xml` or Gradle `build.gradle` dependency blocks.
 
+🌐 **Live Demo:** [https://chrissperb.github.io/4P-2-frontend-advanced/](https://chrissperb.github.io/4P-2-frontend-advanced/)
+
 ---
 
 ## 🌟 Key Features
@@ -75,6 +77,9 @@ All interactive state is centralized and managed deterministically in `App.jsx`:
 ## 📁 Project Structure
 
 ```
+├── .github/
+│   └── workflows/
+│       └── deploy.yml            # GitHub Actions CI/CD to GitHub Pages
 ├── .agents/
 │   └── skills/
 │       └── caveman/
@@ -93,9 +98,11 @@ All interactive state is centralized and managed deterministically in `App.jsx`:
 │   ├── App.jsx                   # Main orchestrator component
 │   ├── index.css                 # Global styling & Tailwind CSS directives
 │   └── main.jsx                  # Application entry point
+├── public/
+│   └── favicon.svg               # SVG Browser Favicon
 ├── index.html                    # Root HTML template
 ├── package.json                  # Dependencies & npm scripts
-├── vite.config.js                # Vite build configuration
+├── vite.config.js                # Vite build configuration with GitHub base path
 └── README.md                     # Documentation
 ```
 
@@ -128,7 +135,7 @@ npm run dev
 ```
 Open your browser and navigate to `http://localhost:5173`.
 
-### Production Build
+### Production Build & Deployment
 
 Compile and bundle the optimized static application:
 ```bash
@@ -136,10 +143,12 @@ npm run build
 ```
 The output assets will be generated in the `dist/` directory.
 
-To preview the production build locally:
+To deploy manually via `gh-pages`:
 ```bash
-npm run preview
+npm run deploy
 ```
+
+Automated deployments are also configured via GitHub Actions in `.github/workflows/deploy.yml` upon push to repository branches.
 
 ---
 
@@ -149,7 +158,7 @@ npm run preview
 - **Build Tool:** [Vite 6](https://vite.dev/)
 - **Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
 - **Icons:** [Lucide React](https://lucide.dev/)
-- **Deployment Target:** Any static web host (GitHub Pages, Vercel, Netlify, Cloudflare Pages, S3).
+- **Deployment Target:** GitHub Pages (`gh-pages` / GitHub Actions).
 
 ---
 
