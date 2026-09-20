@@ -14,9 +14,10 @@ SpringStack Advisor is a static React application designed to help Java develope
 - **Curated Spring Boot Catalog:** Categorized modules across Web, Database, Security, Messaging, Observability, AI, and Developer Tools.
 - **Architectural Rationale:** Clear explanations detailing *why* each dependency is recommended for your specific scenario.
 - **Dual Build Tool Generation:** Instant toggling and formatting for Maven (`pom.xml`) and Gradle (`build.gradle`).
-- **Spring Initializr Integration:** Generates a pre-configured `start.spring.io` launch URL with supported Spring Boot versions to bootstrap your project with one click.
+- **Configurable Java & Spring Boot Versions:** Interactive version selection supporting Java 17, 21 (default), 25, and 27 alongside Spring Boot 4.0.8 and 4.1.1 (default).
+- **Spring Initializr Integration:** Generates a pre-configured `start.spring.io` launch URL with dynamically selected Java and Spring Boot platform versions to bootstrap your project with one click.
 - **Multilingual Support (i18n):** Full bilingual interface with flag selectors for **English (EN-US 🇺🇸)** and **Português (PT-BR 🇧🇷)**.
-- **Compact Developer UX:** Ergonomic 2-column dashboard layout with dark mode aesthetic, high contrast, and zero layout shift.
+- **Responsive & Modern Developer UX:** Ergonomic layout with dark mode aesthetic, high contrast typography, accessible touch targets, and zero layout shift across mobile and desktop.
 
 ---
 
@@ -136,7 +137,7 @@ npm run dev
 ```
 Open your browser and navigate to `http://localhost:5173`.
 
-### Production Build & Deployment
+### Production Build & Preview
 
 Compile and bundle the optimized static application:
 ```bash
@@ -144,12 +145,17 @@ npm run build
 ```
 The output assets will be generated in the `dist/` directory.
 
-To deploy manually via `gh-pages`:
+To preview the production build locally:
 ```bash
-npm run deploy
+npm run preview
 ```
 
-Automated deployments are also configured via GitHub Actions in `.github/workflows/deploy.yml` upon push to repository branches.
+### Deployment
+
+Continuous Deployment is handled automatically via GitHub Actions:
+- **Workflow:** Configured in [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
+- **Trigger:** Automatically runs on push to the `main` branch (and manually via `workflow_dispatch`).
+- **Pipeline:** Checks out code, sets up Node.js 22, installs dependencies via `npm ci`, builds the static bundle via `npm run build`, and publishes directly to **GitHub Pages** using `actions/deploy-pages@v4`.
 
 ---
 
@@ -159,7 +165,7 @@ Automated deployments are also configured via GitHub Actions in `.github/workflo
 - **Build Tool:** [Vite 6](https://vite.dev/)
 - **Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
 - **Icons:** [Lucide React](https://lucide.dev/)
-- **Deployment Target:** GitHub Pages (`gh-pages` / GitHub Actions).
+- **CI/CD & Hosting:** GitHub Actions (`actions/deploy-pages@v4`) & GitHub Pages.
 
 ---
 
