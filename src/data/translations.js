@@ -1,11 +1,11 @@
 export const TRANSLATIONS = {
   'en-US': {
     appName: 'SpringStack',
-    appBadge: 'Spring Boot 3.4',
+    appBadge: 'Spring Boot 4.1',
     appTagline: 'AI & Intent-based Spring Boot dependency generator for Java developers',
     catalogModules: 'catalog modules',
     heroTitle: 'Describe your Java project. Get instant Spring dependencies.',
-    heroSubtitle: 'Static developer workspace that analyzes your natural language architecture goals, maps required Spring Boot 3.x modules with clear rationale, and exports ready-to-use build configs.',
+    heroSubtitle: 'Static developer workspace that analyzes your natural language architecture goals, maps required Spring Boot modules with clear rationale, and exports ready-to-use build configs.',
     
     // Section 1
     sec1Title: 'Architecture & Requirements',
@@ -34,21 +34,22 @@ export const TRANSLATIONS = {
     mavenBtn: 'Maven (pom.xml)',
     gradleBtn: 'Gradle (build.gradle)',
     javaLabel: 'Java:',
+    bootLabel: 'Boot:',
     copyBtn: 'Copy Code',
     copiedBtn: 'Copied!',
     readyBootstrap: 'Ready to bootstrap project instantly?',
     launchInitializr: 'Launch on Spring Initializr',
 
     // Footer
-    footerText: 'SpringStack Advisor • Static React UX Architecture • Client-side Rule Engine • Spring Boot 3.4.3'
+    footerText: 'SpringStack Advisor • Static React UX Architecture • Client-side Rule Engine • Spring Boot 4.1.1'
   },
   'pt-BR': {
     appName: 'SpringStack',
-    appBadge: 'Spring Boot 3.4',
+    appBadge: 'Spring Boot 4.1',
     appTagline: 'Gerador de dependências Spring Boot baseado em intenção e IA para desenvolvedores Java',
     catalogModules: 'módulos no catálogo',
     heroTitle: 'Descreva seu projeto Java. Receba dependências Spring instantaneamente.',
-    heroSubtitle: 'Espaço de trabalho estático que analisa seus objetivos de arquitetura em linguagem natural, mapeia módulos Spring Boot 3.x com justificativa clara e exporta configurações prontas.',
+    heroSubtitle: 'Espaço de trabalho estático que analisa seus objetivos de arquitetura em linguagem natural, mapeia módulos Spring Boot com justificativa clara e exporta configurações prontas.',
     
     // Section 1
     sec1Title: 'Arquitetura e Requisitos',
@@ -77,13 +78,14 @@ export const TRANSLATIONS = {
     mavenBtn: 'Maven (pom.xml)',
     gradleBtn: 'Gradle (build.gradle)',
     javaLabel: 'Java:',
+    bootLabel: 'Boot:',
     copyBtn: 'Copiar Código',
     copiedBtn: 'Copiado!',
     readyBootstrap: 'Pronto para iniciar o projeto?',
     launchInitializr: 'Abrir no Spring Initializr',
 
     // Footer
-    footerText: 'SpringStack Advisor • Arquitetura React Estática de Alta UX • Motor de Regras no Cliente • Spring Boot 3.4.3'
+    footerText: 'SpringStack Advisor • Arquitetura React Estática de Alta UX • Motor de Regras no Cliente • Spring Boot 4.1.1'
   }
 };
 

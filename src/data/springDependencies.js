@@ -528,3 +528,19 @@ export function matchDependencies(query) {
 
   return matchedIds;
 }
+
+export const SUPPORTED_BOOT_VERSIONS = [
+  { value: '4.1.1', initializrVersion: '4.1.1.RELEASE', label: '4.1.1' },
+  { value: '4.0.8', initializrVersion: '4.0.8.RELEASE', label: '4.0.8' }
+];
+
+export const DEFAULT_BOOT_VERSION = '4.1.1';
+
+export const SUPPORTED_JAVA_VERSIONS = [
+  { value: '27', label: '27' },
+  { value: '25', label: '25' },
+  { value: '21', label: '21' },
+  { value: '17', label: '17' }
+];
+
+export const DEFAULT_JAVA_VERSION = '21';

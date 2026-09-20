@@ -2,7 +2,7 @@
 
 > **Intelligent, intent-based Spring Boot dependency advisor and build generator for Java developers.**
 
-SpringStack Advisor is a static React application designed to help Java developers discover, select, and configure the right Spring Boot dependencies for their applications. By entering natural language architecture requirements (or selecting common presets), the application analyzes requirements in real time, recommends matching Spring Boot 3.4 modules with clear architectural rationales, and generates ready-to-use Maven `pom.xml` or Gradle `build.gradle` dependency blocks.
+SpringStack Advisor is a static React application designed to help Java developers discover, select, and configure the right Spring Boot dependencies for their applications. By entering natural language architecture requirements (or selecting common presets), the application analyzes requirements in real time, recommends matching Spring Boot modules with clear architectural rationales, and generates ready-to-use Maven `pom.xml` or Gradle `build.gradle` dependency blocks.
 
 🌐 **Live Demo:** [https://chrissperb.github.io/4P-2-frontend-advanced/](https://chrissperb.github.io/4P-2-frontend-advanced/)
 
@@ -11,10 +11,10 @@ SpringStack Advisor is a static React application designed to help Java develope
 ## 🌟 Key Features
 
 - **Natural Language Intent Matcher:** Client-side rule engine analyzes architecture prompts in real time and highlights relevant Spring Boot starters.
-- **Curated Spring Boot 3.4 Catalog:** Categorized modules across Web, Database, Security, Messaging, Observability, AI, and Developer Tools.
+- **Curated Spring Boot Catalog:** Categorized modules across Web, Database, Security, Messaging, Observability, AI, and Developer Tools.
 - **Architectural Rationale:** Clear explanations detailing *why* each dependency is recommended for your specific scenario.
 - **Dual Build Tool Generation:** Instant toggling and formatting for Maven (`pom.xml`) and Gradle (`build.gradle`).
-- **Spring Initializr Integration:** Generates a pre-configured `start.spring.io` launch URL to bootstrap your project with one click.
+- **Spring Initializr Integration:** Generates a pre-configured `start.spring.io` launch URL with supported Spring Boot versions to bootstrap your project with one click.
 - **Multilingual Support (i18n):** Full bilingual interface with flag selectors for **English (EN-US 🇺🇸)** and **Português (PT-BR 🇧🇷)**.
 - **Compact Developer UX:** Ergonomic 2-column dashboard layout with dark mode aesthetic, high contrast, and zero layout shift.
 
@@ -39,7 +39,7 @@ App.jsx (State Root)
 │   └── DependencyCard.jsx (Props: dep, isSelected, onToggle, isRecommended, lang, t)
 │
 └── SectionCard.jsx [Build Configuration] (Uses props.children)
-    └── BuildSnippet.jsx (Props: selectedDeps, buildTool, onBuildToolChange, javaVersion, onJavaVersionChange, springBootVersion, copied, onCopy, t)
+    └── BuildSnippet.jsx (Props: selectedDeps, buildTool, onBuildToolChange, javaVersion, onJavaVersionChange, springBootVersion, onSpringBootVersionChange, copied, onCopy, t)
 ```
 
 ### 2. Composition with `props.children`
@@ -68,7 +68,8 @@ All interactive state is centralized and managed deterministically in `App.jsx`:
 | `selectedDepIds` | `string[]` | Array of currently selected dependency identifiers |
 | `buildTool` | `string` | Selected build tool format (`'maven'` or `'gradle'`) |
 | `activeCategory` | `string` | Active catalog category filter tab |
-| `javaVersion` | `string` | Target Java LTS version (`'21'` or `'17'`) |
+| `javaVersion` | `string` | Target Java version (`'27'`, `'25'`, `'21'`, or `'17'`) |
+| `springBootVersion` | `string` | Target Spring Boot supported version (`'4.1.1'` or `'4.0.8'`) |
 | `copied` | `boolean` | Clipboard feedback state for the copy button |
 | `autoMatchedIds` | `string[]` | Dependencies identified by the NLP matcher |
 

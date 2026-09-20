@@ -8,7 +8,9 @@ import {
   SPRING_DEPENDENCIES,
   PRESETS,
   CATEGORIES,
-  matchDependencies
+  matchDependencies,
+  DEFAULT_BOOT_VERSION,
+  DEFAULT_JAVA_VERSION
 } from './data/springDependencies';
 import { TRANSLATIONS } from './data/translations';
 import {
@@ -27,7 +29,8 @@ export default function App() {
   const [selectedDepIds, setSelectedDepIds] = useState([]);
   const [buildTool, setBuildTool] = useState('maven');
   const [activeCategory, setActiveCategory] = useState('all');
-  const [javaVersion, setJavaVersion] = useState('21');
+  const [javaVersion, setJavaVersion] = useState(DEFAULT_JAVA_VERSION);
+  const [springBootVersion, setSpringBootVersion] = useState(DEFAULT_BOOT_VERSION);
   const [copied, setCopied] = useState(false);
   const [autoMatchedIds, setAutoMatchedIds] = useState([]);
 
@@ -215,7 +218,8 @@ export default function App() {
                 onBuildToolChange={setBuildTool}
                 javaVersion={javaVersion}
                 onJavaVersionChange={setJavaVersion}
-                springBootVersion="3.4.3"
+                springBootVersion={springBootVersion}
+                onSpringBootVersionChange={setSpringBootVersion}
                 copied={copied}
                 onCopy={handleCopy}
                 t={t}

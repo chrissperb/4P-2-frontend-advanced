@@ -1,13 +1,20 @@
 import React from 'react';
 import { Copy, Check, ExternalLink, Code2, Download } from 'lucide-react';
+import {
+  SUPPORTED_BOOT_VERSIONS,
+  DEFAULT_BOOT_VERSION,
+  SUPPORTED_JAVA_VERSIONS,
+  DEFAULT_JAVA_VERSION
+} from '../data/springDependencies';
 
 export default function BuildSnippet({
   selectedDeps = [],
   buildTool = 'maven',
   onBuildToolChange,
-  javaVersion = '21',
+  javaVersion = DEFAULT_JAVA_VERSION,
   onJavaVersionChange,
-  springBootVersion = '3.4.3',
+  springBootVersion = DEFAULT_BOOT_VERSION,
+  onSpringBootVersionChange,
   copied = false,
   onCopy,
   t
@@ -54,9 +61,14 @@ export default function BuildSnippet({
     .filter(Boolean)
     .join(',');
 
+  const selectedBootConfig =
+    SUPPORTED_BOOT_VERSIONS.find((v) => v.value === springBootVersion) ||
+    SUPPORTED_BOOT_VERSIONS[0];
+  const initializrPlatformVersion = selectedBootConfig.initializrVersion;
+
   const initializrUrl = `https://start.spring.io/#!type=${
     buildTool === 'maven' ? 'maven-project' : 'gradle-project'
-  }&language=java&platformVersion=${springBootVersion}&packaging=jar&jvmVersion=${javaVersion}&dependencies=${initializrDeps}`;
+  }&language=java&platformVersion=${initializrPlatformVersion}&packaging=jar&jvmVersion=${javaVersion}&dependencies=${initializrDeps}`;
 
   return (
     <div className="space-y-3.5">
@@ -86,17 +98,33 @@ export default function BuildSnippet({
         </div>
 
         <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-300">
-          <span className="font-medium">Java</span>
+          <span className="font-medium">{t.javaLabel ? t.javaLabel.replace(':', '') : 'Java'}</span>
           <select
             value={javaVersion}
             onChange={(e) => onJavaVersionChange(e.target.value)}
             aria-label="Java version"
             className="rounded border border-slate-800 bg-slate-950 px-2 py-0.5 text-xs sm:text-sm text-slate-200 outline-none focus:border-emerald-500/80"
           >
-            <option value="21">21</option>
-            <option value="17">17</option>
+            {SUPPORTED_JAVA_VERSIONS.map((j) => (
+              <option key={j.value} value={j.value}>
+                {j.label}
+              </option>
+            ))}
           </select>
-          <span className="font-mono text-emerald-400 font-medium">Boot {springBootVersion}</span>
+
+          <span className="font-medium ml-1">{t.bootLabel ? t.bootLabel.replace(':', '') : 'Boot'}</span>
+          <select
+            value={springBootVersion}
+            onChange={(e) => onSpringBootVersionChange?.(e.target.value)}
+            aria-label="Spring Boot version"
+            className="rounded border border-slate-800 bg-slate-950 px-2 py-0.5 text-xs sm:text-sm text-slate-200 outline-none focus:border-emerald-500/80"
+          >
+            {SUPPORTED_BOOT_VERSIONS.map((b) => (
+              <option key={b.value} value={b.value}>
+                {b.label}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
 
